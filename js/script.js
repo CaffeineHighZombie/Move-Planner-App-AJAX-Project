@@ -37,7 +37,22 @@ function loadData() {
     }).error(function() {
         $nytHeaderElem.text("New York Times Articles Could Not Be Loaded");
     });
-    
+
+     // Wikipedia AJAX Request
+    $.ajax({
+        url: "https://en.wikipedia.org/w/api.php",
+        data: {action: "opensearch", search: cityStr},
+        method: 'GET',
+        dataType: 'jsonp',
+        success: function(result) {
+            var items =  [];
+            for(var i = 0; i < result[1].length; i++) {
+                items.push('<li><a href="' + result[3][i] + '">' + result[1][i] + '</a></li>');
+            }
+            $wikiElem.append(items.join(""));
+        }
+    });
+
 
     return false;
 };
