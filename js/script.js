@@ -34,8 +34,10 @@ function loadData() {
         });
         $nytHeaderElem.text("New York Times Articles About " + address);
         $nytElem.append(items.join(""));
+    }).error(function() {
+        $nytHeaderElem.text("New York Times Articles Could Not Be Loaded");
     });
-
+    
 
     return false;
 };
