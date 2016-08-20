@@ -12,6 +12,12 @@ function loadData() {
     $nytElem.text("");
 
     // load streetview
+    var streetStr = $("input#street").val();
+    var cityStr = $("input#city").val();
+    var address = streetStr + ", " + cityStr;
+    $greeting.text("So you wanna live at " + address + " ?");
+    var imageSrc = "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=" + address + "&key=AIzaSyAqfLIYtudP4SdFwUoTU3jaGe2yISNeoVo";
+    $body.append('<img class="bgimg" src="' + imageSrc + '">');
 
     // YOUR CODE GOES HERE!
 
